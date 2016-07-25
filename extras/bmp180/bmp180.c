@@ -288,8 +288,9 @@ static bool bmp180_createTask()
     // We already have a task
     portBASE_TYPE x = pdPASS;
 
-    if (bmp180_task_handle == NULL) {
-        x = xTaskCreate(bmp180_driver_task, (signed char *)"bmp180_driver_task", 256, NULL, BMP180_TASK_PRIORITY, &bmp180_task_handle);
+    if (bmp180_task_handle==NULL)
+    {
+        x = xTaskCreate(bmp180_driver_task, (const char * const)"bmp180_driver_task", 256, NULL, BMP180_TASK_PRIORITY, &bmp180_task_handle);
     }
     return x == pdPASS;
 }
